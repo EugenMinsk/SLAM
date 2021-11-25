@@ -20,6 +20,8 @@ font-family: HarmoniaSansProCyr;
 }
 .table{
   border: 1px solid rgba(17, 34, 62, 0.07);
+  border-left-color: rgba(17,34,62,0.2);
+
   border-spacing: 0;
   border-collapse: collapse;
     .string{
@@ -154,14 +156,70 @@ font-family: HarmoniaSansProCyr;
     .cell_value{
       position: relative;
       text-align: center;
-
+      padding: 15px 5px;
+      min-width: 43px;
       .cell__movement{
         position: absolute;
-        top: 0;
+        display: none;
       }
       .cell__additionally{
         position: absolute;
-        bottom: 0;
+        display: none;
+      }
+      &.cell_additionally-info{
+        .cell__additionally{
+          display: block;
+          bottom: 4px;
+          left: 0;
+          right: 0;
+          display: block;
+          width: max-content;
+          margin: 0 auto;
+          padding: 2px 5px;
+          color: $accentColor;
+          background: $accentBcg;
+          border-radius: 3px;
+          font-size: 10px;
+          line-height: 8px;
+        }
+      }
+      &.cell_movement-info{
+        .cell__movement{
+          display: block;
+          top: 5px;
+          right: 2px;
+          font-size: 10px;
+          line-height: 7px;
+          padding-left: 8px;
+          &::before{
+            position: absolute;
+            content: '';
+            left: 0;
+            top: 2px;
+            width: 0;
+            height: 0;
+            border-left: 3px solid transparent;
+            border-right: 3px solid transparent;
+          }
+        }
+      }
+      &.cell_movement-up{
+        .cell__movement{
+          color: $green;
+
+          &::before{
+            border-bottom: 3px solid $green;
+          }
+        }
+
+      }
+      &.cell_movement-down{
+        .cell__movement{
+          color: $accentDown;
+          &::before{
+            border-top: 3px solid $accentDown;
+          }
+        }
       }
     }
     .cell_date{
@@ -189,17 +247,42 @@ font-family: HarmoniaSansProCyr;
           line-height: 8px;
         }
       }
+
     }
-    
+    .dropdown{
+      .string{
+
+
+      }
+      .cell_category,
+      .cell_estimation,
+      .cell_icon{
+        padding: 0;
+        border: none;
+      }
+      .cell_icon{
+        position: relative;
+        height: 51px;
+        .icon-picture{
+          position: absolute;
+          height: 24px;
+          width: 24px;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          margin: auto;
+          border-radius: 6px;
+          opacity: 0.3;
+          transition: all 0.3s;
+          cursor: pointer;
+
+          &.icon-picture_focused{
+            opacity: 1;
+            transition: all 0.3s;
+          }
+        }
+      }
+
+    }
 }
-
-
-
-
-/* .star svg{
-  stroke:#B8BDC6;
-
-} */
-/* stroke="#B8BDC6";
-stroke="#F5A623";
-fill="#F5A623"; */

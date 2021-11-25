@@ -1,10 +1,10 @@
 
 const table = document.querySelector('.table');
-const checkboxes =document.querySelectorAll(".check-field");
-const mainCheckbox =document.querySelector(".check-field_main");
-const specificCheckbox =document.querySelectorAll(".check-field_specific");
+const checkboxes = document.querySelectorAll(".check-field");
+const mainCheckbox = document.querySelector(".check-field_main");
+const specificCheckbox = document.querySelectorAll(".check-field_specific");
+const icons = document.querySelectorAll(".icon-picture");
 let arr = [... specificCheckbox];
-
 
 const Mark = function(event){
   if(event.target.classList.contains('check-field')){
@@ -54,7 +54,29 @@ const Favourites = function(event){
     event.target.parentNode.classList.toggle('star_active')
   }
 }
+const Illumination = function(event){
+  if(event.target.classList.contains('icon-picture')){
+    let typeIcon =event.target.getAttribute('type')
+    for(let i=0; i<icons.length; i++){
+      
+      if(icons[i].getAttribute('type') === typeIcon){
+        icons[i].classList.add('icon-picture_focused')
+      }else{
+        icons[i].classList.remove('icon-picture_focused')
+      }
+    }
+  }else{
+    for(let i=0; i<icons.length; i++){
+      icons[i].classList.remove('icon-picture_focused')
+    }
+  }
+}
 
 ChangeBckg()
 table.addEventListener('click', Mark )
 table.addEventListener('click', Favourites )
+table.addEventListener('mouseover', Illumination )
+/* for(let i=0; i<icons.length; i++){
+  icons[i].addEventListener('mouseover', Illumination )
+} */
+

@@ -8,6 +8,8 @@ const uglify = require("gulp-uglify-es").default;
 const imagemin = require("gulp-imagemin");
 const del = require("del");
 const sourcemaps = require("gulp-sourcemaps");
+const minify = require("html-minifier");
+
 
 function browsersync() {
   browserSync.init({
@@ -33,7 +35,15 @@ function images() {
     )
     .pipe(dest("dist/images"));
 }
-
+function htmlConversion(){
+  return src("app/index.html")
+  .pipe(minify({
+    collapseWhitespace: true,
+    conservativeCollapse: true,
+    keepClosingSlash: true,
+  }))
+  .pipe(dest("./dist/"));
+}
 function conversion() {
   return src("app/scss/style.scss")
       .pipe(sourcemaps.init())
@@ -51,6 +61,7 @@ function conversion() {
       .pipe(dest("app/css"))
       .pipe(browserSync.stream());
 }
+
 function sripts() {
   return src(["node_modules/jquery/dist/jquery.js", "app/js/main.js"])
     .pipe(concat("main.min.js"))
@@ -64,7 +75,7 @@ function build() {
       "app/css/style.min.css",
       "app/fonts/**/*",
       "app/js/main.min.js",
-      "app/**/*.html",
+      //"app/**/*.html",
     ],
     { base: "app" }
   ).pipe(dest("dist"));
@@ -82,6 +93,7 @@ exports.browsersync = browsersync;
 exports.sripts = sripts;
 exports.images = images;
 exports.cleanDist = cleanDist;
+exports.htmlConversion = htmlConversion;
 
-exports.build = series(cleanDist, images, build);
+exports.build = series(cleanDist, images, htmlConversion, build);
 exports.default = parallel(conversion, browsersync, watching, sripts);

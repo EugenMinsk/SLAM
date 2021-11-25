@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
-    "gulp-sourcemaps": "^3.0.0"
+    "gulp-sourcemaps": "^3.0.0",
+    "html-minifier": "^4.0.0"
   },
   "devDependencies": {
     "browser-sync": "^2.26.14",
