@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,31 +7,106 @@
     <link rel="stylesheet" href="css/style.min.css" />
   </head>
   <body>
+    <div class="container">
     <table class="table">
-      <tr class="string">
-        <td class="cell cell_category">
-          <input type="checkbox">
-        </td>
+      <tr class="string string_header">
+        <th class="cell cell_category">
+          <div class="check-field check-field_main"></div>
+        </th>
         <td class="cell cell_estimation">
-          Оценка частотн.
+         <p>Оценка частотн.</p> 
         </td>
-        <td class="cell cell_date">21.06</td>
-        <td class="cell cell_date">22.06</td>
-        <td class="cell cell_date">23.06</td>
+        <td class="cell cell_date cell_additionally-info">
+          <p class="cell__main-info">25.06</p>
+          <p class="cell__additionally">30</p>
+        </td>
+        <td class="cell cell_date">
+          <p class="cell__main-info">26.06</p>
+          <p class="cell__additionally"></p>
+        </td>
+        <td class="cell cell_date">
+          <p class="cell__main-info">27.06</p>
+          <p class="cell__additionally"></p>
+        </td>
       </tr>
       <tr class="string">
-        <td class="cell cell_category">
-          <input type="checkbox">
+        <th class="cell cell_category">
+          <div class="check-field check-field_specific"></div>
           <p class="name-category">Тинькофф банк отзывы</p>
-        </td>
+
+          <div class="arrow-box arrow-box_active">
+          <div class="star">
+
+            <svg width="16" height="17" class="star-picture" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path class="star-path" fill-rule="evenodd" clip-rule="evenodd" d="M8 13.6667L3.33333 16L4.30145 10.9795L1 7.44444L5.71417 6.6316L8 2L10.2858 6.6316L15 7.44444L11.6986 10.9795L12.6667 16L8 13.6667Z"/>
+            </svg>
+
+          </div>
+            <svg width="6" height="10" class="arrow-picture"  viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.292892 1.35355L0.999999 0.64644L5.35355 4.99999L0.999999 9.35355L0.292892 8.64644L3.93934 4.99999L0.292892 1.35355Z" fill="#11223E"/>
+            </svg>
+              
+          </div>
+        </th>
         <td class="cell cell_estimation">
-          Оценка частотн.
+          2750
         </td>
-        <td class="cell cell_date">21.06</td>
-        <td class="cell cell_date">22.06</td>
-        <td class="cell cell_date">23.06</td>
+        <td class="cell cell_value">
+          <p class="cell__movement">1</p>
+          <p class="cell__numbers">62</p>
+          <p class="cell__additionally">30</p>
+        </td>
+        <td class="cell cell_value">
+          <p class="cell__movement"></p>
+          <p class="cell__numbers">48</p>
+          <p class="cell__additionally"></p>
+        </td>
+        <td class="cell cell_value">
+          <p class="cell__movement"></p>
+          <p class="cell__numbers">37</p>
+          <p class="cell__additionally"></p>
+        </td>
+      </tr>
+      <tr class="string">
+        <th class="cell cell_category">
+          <div class="check-field check-field_specific"></div>
+          <p class="name-category">Тинькофф банк</p>
+          <div class="arrow-box arrow-box_active">
+            <div class="star">
+  
+              <svg width="16" height="17" class="star-picture" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" class="star-path" clip-rule="evenodd" d="M8 13.6667L3.33333 16L4.30145 10.9795L1 7.44444L5.71417 6.6316L8 2L10.2858 6.6316L15 7.44444L11.6986 10.9795L12.6667 16L8 13.6667Z"/>
+              </svg>
+  
+            </div>
+
+            <svg width="6" height="10" class="arrow-picture" viewBox="0 0 6 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.292892 1.35355L0.999999 0.64644L5.35355 4.99999L0.999999 9.35355L0.292892 8.64644L3.93934 4.99999L0.292892 1.35355Z" fill="#11223E"/>
+            </svg>
+              
+          </div>
+        </th>
+        <td class="cell cell_estimation">
+          4150
+        </td>
+        <td class="cell cell_value">
+          <p class="cell__movement"></p>
+          <p class="cell__numbers">25</p>
+          <p class="cell__additionally"></p>
+        </td>
+        <td class="cell cell_value">
+          <p class="cell__movement"></p>
+          <p class="cell__numbers">38</p>
+          <p class="cell__additionally"></p>
+        </td>
+        <td class="cell cell_value">
+          <p class="cell__movement"></p>
+          <p class="cell__numbers">76</p>
+          <p class="cell__additionally"></p>
+        </td>
       </tr>
     </table>
+  </div>
     <script src="js/main.min.js"></script>
   </body>
 </html>

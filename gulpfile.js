@@ -7,6 +7,7 @@ const browserSync = require("browser-sync").create();
 const uglify = require("gulp-uglify-es").default;
 const imagemin = require("gulp-imagemin");
 const del = require("del");
+const sourcemaps = require("gulp-sourcemaps");
 
 function browsersync() {
   browserSync.init({
@@ -35,16 +36,20 @@ function images() {
 
 function conversion() {
   return src("app/scss/style.scss")
-    .pipe(
-      autoprefixer({
-        overrideBrowserslist: ["last 10 version"],
-        grid: true,
-      })
-    )
-    .pipe(scss({ outputStyle: "compressed" }))
-    .pipe(concat("style.min.css"))
-    .pipe(dest("app/css"))
-    .pipe(browserSync.stream());
+      .pipe(sourcemaps.init())
+      .pipe(
+          autoprefixer({
+              overrideBrowserslist: ["last 10 version"],
+              grid: true,
+          })
+      )
+      .pipe(scss({ outputStyle: "compressed" }))
+      .pipe(concat("style.min.css"))
+      .pipe(sourcemaps.write({ includeContent: false, sourceRoot: "." }))
+      .pipe(sourcemaps.init({ loadMaps: true }))
+      .pipe(sourcemaps.write())
+      .pipe(dest("app/css"))
+      .pipe(browserSync.stream());
 }
 function sripts() {
   return src(["node_modules/jquery/dist/jquery.js", "app/js/main.js"])

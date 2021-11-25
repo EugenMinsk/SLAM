@@ -1,3 +1,205 @@
-body {
-  display: flex;
+@import 'variables','fonts';
+
+*{
+  padding: 0;
+  margin: 0;
+
 }
+body{
+color: $mainColor;
+font-size: 14px;
+font-family: HarmoniaSansProCyr;
+}
+
+.container{
+  max-width: 1000px;
+  left: 0;
+  right: 0;
+  margin: 50px auto 0;
+
+}
+.table{
+  border: 1px solid rgba(17, 34, 62, 0.07);
+  border-spacing: 0;
+  border-collapse: collapse;
+    .string{
+      &.paint{
+        background: #ddd;
+      }
+      &.string_header{
+        background: $white;
+        color: $firstString;
+        font-size: 12px;
+        .cell_estimation{
+          p{
+            max-width: 45px;
+            padding-right: 12px;
+            position: relative;
+            &::after{
+              position: absolute;
+              content: '';
+              right: 0;
+              width: 0;
+              height: 0;
+              border-top: 3px solid $firstString;
+              border-left: 3px solid transparent;
+              border-right: 3px solid transparent;
+
+            }
+          }
+        }
+      }
+      &:hover{
+        .cell_category .arrow-box .star .star-picture{
+          opacity: 1;
+        }
+      }
+    }
+    .cell{
+    border: 1px solid rgba(17, 34, 62, 0.07);
+    padding: 15px;
+    box-sizing: border-box;
+    position: relative;
+  }
+    .cell_category{
+    border: 1px solid rgba(17, 34, 62, 0.2);
+    width: 285px;
+    text-align: left;
+    font-weight: normal;
+
+      .check-field{
+        width: 20px;
+        height: 20px;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        background: $checkboxDisabled;
+        float: left;
+        margin-right: 20px;
+    
+        &.check-field_active{
+          background: $checkboxActive;
+          position: relative;
+          &::before{
+            position: absolute;
+            content: '';
+            width: 70%;
+            height: 70%;
+            background-image: url(../images/check-white.svg);
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+          }
+        }
+      }
+      .name-category{
+        float: left;
+        padding-right: 20px;
+      }
+      .arrow-box{
+        position: relative;
+        margin-left: auto;
+        width: 10px;
+        height: 10px;
+        display: block;
+        margin-top: 4px;
+
+        .arrow-picture{
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          margin: 0 auto;
+          cursor: pointer;
+        }
+        .star{
+        position: absolute;
+        width: 14px;
+        height: 14px;
+        left: -20px;
+        top: -2px;
+        cursor: pointer;
+          .star-picture{
+            position: absolute;
+            stroke:$starNotActive;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: all 0.5s;
+
+          }
+          &:hover{
+            .star-picture{
+              stroke:$starActive;
+            }
+          }
+          &.star_active{
+            .star-picture{
+              stroke:$starActive;
+              fill: $starActive;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+    .cell_estimation{
+    border: 1px solid rgba(17, 34, 62, 0.2);
+    text-align: center;
+    padding: 10px 15px;
+
+    }
+    .cell_value{
+      position: relative;
+      text-align: center;
+
+      .cell__movement{
+        position: absolute;
+        top: 0;
+      }
+      .cell__additionally{
+        position: absolute;
+        bottom: 0;
+      }
+    }
+    .cell_date{
+      padding: 15px 0;
+      text-align: center;
+      position: relative;
+      .cell__additionally{
+        position: absolute;
+        display: none;
+      }
+      &.cell_additionally-info{
+        .cell__additionally{
+          display: block;
+          bottom: 4px;
+          left: 0;
+          right: 0;
+          display: block;
+          width: max-content;
+          margin: 0 auto;
+          padding: 2px 5px;
+          color: $accentColor;
+          background: $accentBcg;
+          border-radius: 3px;
+          font-size: 10px;
+          line-height: 8px;
+        }
+      }
+    }
+    
+}
+
+
+
+
+/* .star svg{
+  stroke:#B8BDC6;
+
+} */
+/* stroke="#B8BDC6";
+stroke="#F5A623";
+fill="#F5A623"; */
