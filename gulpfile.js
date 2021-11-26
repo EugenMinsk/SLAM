@@ -25,7 +25,7 @@ function images() {
   return src("app/images/**/*")
     .pipe(
       imagemin([
-        imagemin.gifsicle({ interlaced: true }),
+        /* imagemin.gifsicle({ interlaced: true }), */
         imagemin.mozjpeg({ quality: 75, progressive: true }),
         imagemin.optipng({ optimizationLevel: 5 }),
         imagemin.svgo({
@@ -35,15 +35,13 @@ function images() {
     )
     .pipe(dest("dist/images"));
 }
-function htmlConversion(){
+/* function htmlConversion(){
   return src("app/index.html")
-  .pipe(minify({
-    collapseWhitespace: true,
-    conservativeCollapse: true,
-    keepClosingSlash: true,
-  }))
-  .pipe(dest("./dist/"));
-}
+    .pipe(minify({collapseWhitespace: true},{conservativeCollapse: true},{keepClosingSlash: true}))
+    .pipe(dest("./dist/"));
+} */
+
+
 function conversion() {
   return src("app/scss/style.scss")
       .pipe(sourcemaps.init())
@@ -75,7 +73,7 @@ function build() {
       "app/css/style.min.css",
       "app/fonts/**/*",
       "app/js/main.min.js",
-      //"app/**/*.html",
+      "app/**/*.html",
     ],
     { base: "app" }
   ).pipe(dest("dist"));
@@ -93,7 +91,7 @@ exports.browsersync = browsersync;
 exports.sripts = sripts;
 exports.images = images;
 exports.cleanDist = cleanDist;
-exports.htmlConversion = htmlConversion;
-
-exports.build = series(cleanDist, images, htmlConversion, build);
+/* exports.htmlConversion = htmlConversion;
+ */
+exports.build = series(cleanDist, images, /* htmlConversion, */ build);
 exports.default = parallel(conversion, browsersync, watching, sripts);

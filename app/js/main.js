@@ -105,6 +105,7 @@ const DropdDown = function(){
  */  nextTbody.classList.toggle('dropdown_visible')
 }
 
+
 ChangeBckg()
 table.addEventListener('click', Mark )
 table.addEventListener('click', Favourites )
@@ -112,5 +113,31 @@ table.addEventListener('mouseover', IlluminationPicture )
 for(let i=0; i<arrows.length;i++){
   arrows[i].addEventListener('click', DropdDown )
 }
+
+
+
+
+
+//Горизонтальный скролл
+(function() {
+
+  function scrollHorizontally(e) {
+      e = window.event || e;
+      var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+      document.querySelector('.wrapper-table').scrollLeft -= (delta*10); // Multiplied by 10
+      e.preventDefault();
+  }
+  if (document.querySelector('.wrapper-table').addEventListener) {
+      // IE9, Chrome, Safari, Opera
+      document.querySelector('.wrapper-table').addEventListener("mousewheel", scrollHorizontally, false);
+      // Firefox
+      document.querySelector('.wrapper-table').addEventListener("DOMMouseScroll", scrollHorizontally, false);
+  } else {
+      // IE 6/7/8
+      document.querySelector('.wrapper-table').attachEvent("onmousewheel", scrollHorizontally);
+  }
+
+})();
+
 
 
