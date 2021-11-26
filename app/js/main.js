@@ -4,6 +4,7 @@ const checkboxes = document.querySelectorAll(".check-field");
 const mainCheckbox = document.querySelector(".check-field_main");
 const specificCheckbox = document.querySelectorAll(".check-field_specific");
 const icons = document.querySelectorAll(".icon-picture");
+const arrows = document.querySelectorAll(".arrow-picture");
 let arr = [... specificCheckbox];
 
 const Mark = function(event){
@@ -14,9 +15,19 @@ const Mark = function(event){
     mainCheckbox.classList.remove('check-field_active')
   }
   if(event.target.classList.contains('check-field_active')){
-    event.target.parentNode.parentNode.classList.add('paint')
+    let parentString = event.target.closest('.string')
+    let stringCategory = parentString.querySelector('.cell_category')
+    let stringEstimation = parentString.querySelector('.cell_estimation')
+    parentString.classList.add('paint')
+    stringCategory.classList.add('paint')
+    stringEstimation.classList.add('paint')
   }else{
-    event.target.parentNode.parentNode.classList.remove('paint')
+    let parentString = event.target.closest('.string')
+    let stringCategory = parentString.querySelector('.cell_category')
+    let stringEstimation = parentString.querySelector('.cell_estimation')
+    parentString.classList.remove('paint')
+    stringCategory.classList.remove('paint')
+    stringEstimation.classList.remove('paint')
   }
   if(event.target.classList.contains('check-field_main')){
     if(event.target.classList.contains('check-field_active')){
@@ -40,9 +51,23 @@ const Mark = function(event){
 const ChangeBckg =function(){
   for(let i= 0; i<checkboxes.length; i++){
     if(checkboxes[i].classList.contains('check-field_active')){
-      checkboxes[i].parentNode.parentNode.classList.add('paint')
+       /* checkboxes[i].parentNode.parentNode.classList.add('paint') */
+       let parentString = checkboxes[i].closest('.string')
+       let stringCategory = parentString.querySelector('.cell_category')
+       let stringEstimation = parentString.querySelector('.cell_estimation')
+       parentString.classList.add('paint')
+       stringCategory.classList.add('paint')
+       stringEstimation.classList.add('paint')
+       
     }else{
-      checkboxes[i].parentNode.parentNode.classList.remove('paint')
+     /*  checkboxes[i].parentNode.parentNode.classList.remove('paint') */
+
+      let parentString = checkboxes[i].closest('.string')
+      let stringCategory = parentString.querySelector('.cell_category')
+      let stringEstimation = parentString.querySelector('.cell_estimation')
+      parentString.classList.remove('paint')
+      stringCategory.classList.remove('paint')
+      stringEstimation.classList.remove('paint')
     }
   }
 }
@@ -54,7 +79,7 @@ const Favourites = function(event){
     event.target.parentNode.classList.toggle('star_active')
   }
 }
-const Illumination = function(event){
+const IlluminationPicture = function(event){
   if(event.target.classList.contains('icon-picture')){
     let typeIcon =event.target.getAttribute('type')
     for(let i=0; i<icons.length; i++){
@@ -71,12 +96,21 @@ const Illumination = function(event){
     }
   }
 }
+const DropdDown = function(){
+  this.classList.toggle('arrow-picture_active')
+
+  let nearestTbody = this.closest('tbody') 
+  let nextTbody = nearestTbody.nextElementSibling
+/*   console.log(nextTbody);
+ */  nextTbody.classList.toggle('dropdown_visible')
+}
 
 ChangeBckg()
 table.addEventListener('click', Mark )
 table.addEventListener('click', Favourites )
-table.addEventListener('mouseover', Illumination )
-/* for(let i=0; i<icons.length; i++){
-  icons[i].addEventListener('mouseover', Illumination )
-} */
+table.addEventListener('mouseover', IlluminationPicture )
+for(let i=0; i<arrows.length;i++){
+  arrows[i].addEventListener('click', DropdDown )
+}
+
 
