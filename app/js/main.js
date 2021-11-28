@@ -105,12 +105,17 @@ const DropdDown = function(){
  */  nextTbody.classList.toggle('dropdown_visible')
 }
 
+const showTable = function(){
+  document.querySelector('.container').classList.add('active')
+  document.querySelector('.preloader').classList.add('hidden')
+}
 
+setTimeout (showTable, 3000)
 ChangeBckg()
 table.addEventListener('click', Mark )
 table.addEventListener('click', Favourites )
 table.addEventListener('mouseover', IlluminationPicture )
-for(let i=0; i<arrows.length;i++){
+for(let i=0; i<arrows.length; i++){
   arrows[i].addEventListener('click', DropdDown )
 }
 
@@ -118,9 +123,14 @@ for(let i=0; i<arrows.length;i++){
 
 
 
+
+
+
+
+
+
 //Горизонтальный скролл
 (function() {
-
   function scrollHorizontally(e) {
       e = window.event || e;
       var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
